@@ -3,6 +3,7 @@
     <style>
       .myHeading {
         color: red;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -100,36 +101,52 @@
       const addToTheSecond = function (content) {
         const addListItem = document.querySelectorAll("ul")[1];
         const newLi = document.createElement("li");
+        addListItem.appendChild(newLi);
+        newLi.innerText = content;
       };
+      console.log(addToTheSecond('this is an added "li"'));
 
       /* EXERCISE 6
        Write a function for adding a second paragraph to the first div.
       */
 
-      const addParagraph = function (content) {};
+      const addParagraph = function (content) {
+        const firstDiv = document.querySelector("div");
+        const newPar = document.createElement("p");
+        newPar.innerText = content;
+        firstDiv.appendChild(newPar);
+      };
+      console.log(addParagraph("this is added trough function"));
 
       /* EXERCISE 7
        Write a function for making the first unordered list disappear.
       */
 
       const firstUlDisappear = function () {
-        //
+        const firstList = document.getElementById("firstList");
+        firstList.remove();
       };
+      //console.log(firstUlDisappear());
 
       /* EXERCISE 8
        Write a function for making the background of every unordered list green.
       */
 
       const paintItGreen = function () {
-        //
+        const lists = document.querySelectorAll("ul");
+        for (i = 0; i < lists.length; i++)
+          lists[i].style.backgroundColor = "green";
       };
+      console.log(paintItGreen());
 
       /* EXERCISE 9
        Make the heading of the page change color every time the user clicks on it.
       */
 
       const makeItClickable = function () {
-        //
+        const mainH = document.querySelector("h1");
+        let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        mainH.style.color = randomColor;
       };
 
       /* EXERCISE 10
@@ -147,7 +164,7 @@
       const inputField = document.getElementById("input-field");
       // ...
 
-      /* EXERCISE 11
+      /* EXERCISE 12
        Attach an event listener to the input field in the page that changes the text of the page's subtitle
       */
 
